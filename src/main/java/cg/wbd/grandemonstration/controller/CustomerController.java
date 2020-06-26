@@ -39,13 +39,27 @@ public class CustomerController {
 
     @GetMapping("{id}")
     public ModelAndView showInformation(@PathVariable Long id) {
-        ModelAndView modelAndView = new ModelAndView("customers/info");
-        Customer customer = customerService.findOne(id);
-        modelAndView.addObject("customer", customer);
+        try{
+
+            ModelAndView modelAndView = new ModelAndView("customers/info");
+            Customer customer = null;
+            customer = customerService.findOne(id);
+            modelAndView.addObject("customer", customer);
+            return modelAndView;
+        }catch (Exception e){
+            return new ModelAndView("redirect:/customers");
+        }
+    }
+
+
+    @GetMapping("/create")
+    public ModelAndView showCreateForm(){
+        ModelAndView modelAndView = new ModelAndView("customers/create");
+        modelAndView.addObject("customer", new Customer());
         return modelAndView;
     }
 
-    @PostMapping
+    @PostMapping("/create")
     public String updateCustomer(Customer customer) {
         customerService.save(customer);
         return "redirect:/customers";

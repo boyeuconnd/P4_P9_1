@@ -39,9 +39,21 @@ public class CustomerServiceImplWithSpringData implements CustomerService {
                 .findAllByNameContainsOrEmailContainsOrAddressContains(keyword, keyword, keyword, pageInfo);
     }
 
+//    @Override
+//    public Customer findOne(Long id) throws Exception {
+//        Customer target = customerRepository.findOne(id);
+//        if(target == null){
+//            throw new Exception("customer not found");
+//        }
+//        return target;
+//    }
     @Override
     public Customer findOne(Long id) {
-        return customerRepository.findOne(id);
+        Customer target = customerRepository.findOne(id);
+//        if(target == null){
+//            throw new Exception("customer not found");
+//        }
+        return target;
     }
 
     @Override

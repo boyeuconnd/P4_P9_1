@@ -48,6 +48,7 @@ There are [[${customers.totalElements}]] customer(s).
   </tr>
   </tbody>
 </table>
+<a href="/customers/create">Create new customer</a>
 <div>
   <a th:if="${customers.hasPrevious()}"
      th:href="@{'/customers'(page=${customers.number - 1}, size=${customers.size}, s=${keyword})}">
