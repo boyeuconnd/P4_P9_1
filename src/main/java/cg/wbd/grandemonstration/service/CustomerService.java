@@ -15,8 +15,7 @@ public interface CustomerService {
 
     Page<Customer> search(String keyword, Pageable pageInfo);
 
-//    Customer findOne(Long id) throws Exception;
-    Customer findOne(Long id);
+    Customer findOne(Long id) throws Exception;
 
     Customer save(Customer customer);
 
